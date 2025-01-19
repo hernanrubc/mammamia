@@ -1,0 +1,63 @@
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  font-family: "Bebas Neue", serif;
+  font-weight: 15;
+}
+
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-brand:hover {
+  text-decoration: none;
+  color: #ffc107; 
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 10px; 
+  color: black;
+}
+
+.navbar-buttons .btn {
+  font-size: .9rem;
+  padding: 7px 15px;
+  border-radius: 5px;
+  min-width: 150px;
+  font-family: "Quicksand", serif;
+  color: black;
+  border-color: #EEE5E9;
+  background-color: #EEE5E9;
+
+}
+
+.navbar-buttons .btn:hover {
+  transform: scale(1.05); 
+  transition: transform 0.2s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .navbar-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar-buttons .btn {
+    margin: 5px 0; 
+  }
+}
+
+
+.btn-info {
+  min-width: 160px; 
+  text-align: center; 
+}
