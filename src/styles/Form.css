@@ -1,0 +1,102 @@
+.form-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #666;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+
+.form-register button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-register button:hover {
+  background-color: #1977cc;
+}
+
+
+.form-login button {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-login button:hover {
+  background-color: #e5533d;
+}
+
+.message {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.info-text {
+  text-align: left;
+  margin: 0;
+  margin-top: -4px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.btn-success {
+  width: 100%;
+  padding: 12px;
+  background-color: #9BC53D;
+  border: 1px solid #9BC53D;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #87A72E;
+  border-color: #87A72E;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background-color: #211A1E;
+  border: 1px solid #211A1E;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #181315;
+  border-color: #181315;
+}
