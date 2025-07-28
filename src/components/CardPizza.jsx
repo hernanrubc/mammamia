@@ -2,21 +2,20 @@ import React from 'react';
 import '../styles/CardPizza.css';
 
 
-const CardPizza = ({ name, price, ingredients, img }) => {
-
+const CardPizza = ({ nombre, precio, ingredientes, imagen }) => {
   const formattedPrice = new Intl.NumberFormat('es-CL', {
     style: 'currency',
     currency: 'CLP',
     minimumFractionDigits: 0, 
-  }).format(price);
+  }).format(precio);
 
   return (
     <div className="card">
-      <img src={img} alt={name} className="card-img-top" />
+      <img src={imagen} alt={nombre} className="card-img-top" />
       <div className="card-body">
-        <h5 className="card-title">{name}</h5>
+        <h5 className="card-title">{nombre}</h5>
         <p className="card-text">
-          <strong>Ingredientes:</strong> {ingredients.join(', ')}
+          <strong>Ingredientes:</strong> {ingredientes.join(', ')}
         </p>
         <p className="card-text">
           <strong>Precio:</strong> {formattedPrice}

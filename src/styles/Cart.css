@@ -1,0 +1,46 @@
+.card {
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.custom-btn {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-success {
+  background-color: #9BC53D;
+  border: 1px solid #9BC53D;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #87A72E;
+  border-color: #87A72E;
+}
+
+.btn-danger {
+  background-color: #FF7F50;
+  border: 1px solid #FF7F50;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #e26744;
+  border-color: #e26744;
+}
+
+.cart-img {
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+}
