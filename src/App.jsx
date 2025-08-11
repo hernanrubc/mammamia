@@ -3,11 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Header from './components/Header';
-// import Home from './components/Home';
+import Home from './components/Home';
 import Footer from './components/Footer';
-// import Register from './components/Register';
-// import Login from './components/Login';
 import Cart from './components/Cart';
+import Pizza from './components/Pizza';
 
 const App = () => {
   return (
@@ -19,13 +18,20 @@ const App = () => {
           element={
             <>
               <Header />
-              {/* <Home /> */}
-              <Cart />
+              <Home />
+              {/* <Cart /> */}
             </>
           }
         />
-        {/* <Route path="/register" element={<Register />} /> */}
-        {/* <Route path="/login" element={<Login />} /> */}
+        <Route
+          path="/pizza"
+          element={
+            <>
+              <Header />
+              <Pizza />
+            </>
+          }
+        />
         <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />

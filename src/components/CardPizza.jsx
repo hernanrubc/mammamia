@@ -1,12 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/CardPizza.css';
 
+const CardPizza = ({ nombre, precio, ingredientes = [], imagen }) => {
+  const navigate = useNavigate();
 
-const CardPizza = ({ nombre, precio, ingredientes, imagen }) => {
   const formattedPrice = new Intl.NumberFormat('es-CL', {
     style: 'currency',
     currency: 'CLP',
-    minimumFractionDigits: 0, 
+    minimumFractionDigits: 0,
   }).format(precio);
 
   return (
@@ -21,8 +23,19 @@ const CardPizza = ({ nombre, precio, ingredientes, imagen }) => {
           <strong>Precio:</strong> {formattedPrice}
         </p>
         <div className="buttons-container">
-          <button className="btn btn-primary">👀 Ver Más</button>
-          <button className="btn btn-success">🛒 Añadir</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate('/pizza')}
+          >
+            👀 Ver Más
+          </button>
+
+          <button
+            className="btn btn-success"
+            onClick={() => {/* TODO: lógica de carrito si la agregas después */}}
+          >
+            🛒 Añadir
+          </button>
         </div>
       </div>
     </div>
@@ -30,3 +43,4 @@ const CardPizza = ({ nombre, precio, ingredientes, imagen }) => {
 };
 
 export default CardPizza;
+
