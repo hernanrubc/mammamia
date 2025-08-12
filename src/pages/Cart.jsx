@@ -28,15 +28,13 @@ const Cart = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="text-white mb-4">
-        🛒 Detalles del pedido
-      </h2>
+      <h2 className="text-white mb-4">🛒 Detalles del pedido</h2>
       {cart.length === 0 ? (
         <p className="text-white">El carrito está vacío.</p>
       ) : (
         <>
           {cart.map((pizza) => (
-            <div key={pizza.id} className="card mb-4 p-2">
+            <div key={pizza.id} className="card mb-4 p-3">
               <div className="row g-0 align-items-center">
                 <div className="col-md-3">
                   <img
@@ -46,7 +44,7 @@ const Cart = () => {
                   />
                 </div>
                 <div className="col-md-9">
-                  <div className="card-body">
+                  <div className="card-body text-center">
                     <h5 className="card-title">{pizza.nombre}</h5>
                     <p className="card-text mb-1">
                       Precio unitario: ${pizza.precio.toLocaleString('es-CL')}
@@ -55,18 +53,16 @@ const Cart = () => {
                     <p className="card-text fw-bold">
                       Subtotal: ${(pizza.precio * pizza.cantidad).toLocaleString('es-CL')}
                     </p>
-                    <div>
+                    <div className="d-flex justify-content-center gap-2">
                       <button
-                        className="btn btn-sm btn-danger me-2"
+                        className="custom-btn btn-danger"
                         onClick={() => disminuirCantidad(pizza.id)}
-                        style={{ fontSize: '18px', padding: '4px 10px' }}
                       >
                         &minus;
                       </button>
                       <button
-                        className="btn btn-sm btn-success"
+                        className="custom-btn btn-success"
                         onClick={() => aumentarCantidad(pizza.id)}
-                        style={{ fontSize: '18px', padding: '4px 10px' }}
                       >
                         &#43;
                       </button>
@@ -77,9 +73,9 @@ const Cart = () => {
             </div>
           ))}
 
-          <div className="card p-3 d-flex flex-md-row justify-content-between align-items-center">
+          <div className="card cart-total-card mt-4 d-flex flex-md-row justify-content-between align-items-center">
             <h4 className="fw-bold mb-0">🧾 Total: ${total.toLocaleString('es-CL')}</h4>
-            <button className="btn btn-primary mt-3 mt-md-0">💰 Pagar</button>
+            <button className="btn-pay mt-3 mt-md-0">💰 Pagar</button>
           </div>
         </>
       )}
@@ -88,3 +84,4 @@ const Cart = () => {
 };
 
 export default Cart;
+

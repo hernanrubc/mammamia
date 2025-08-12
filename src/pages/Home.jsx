@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import CardPizza from "./CardPizza";
+import CardPizza from "../components/CardPizza";
 import "../styles/Home.css";
 import { api } from "../services/api";
 
 export default function Home() {
   const [pizzas, setPizzas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError]   = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -29,13 +29,8 @@ export default function Home() {
     })();
   }, []);
 
-  if (loading) {
-    return <div className="container mt-4">Cargando pizzas…</div>;
-  }
-
-  if (error) {
-    return <div className="container mt-4">Ups: {error}</div>;
-  }
+  if (loading) return <div className="container mt-4">Cargando pizzas…</div>;
+  if (error)   return <div className="container mt-4">Ups: {error}</div>;
 
   return (
     <div className="container mt-4">
@@ -47,7 +42,7 @@ export default function Home() {
           >
             <CardPizza
               nombre={pizza.nombre}
-              precio={`$${pizza.precio?.toLocaleString("es-CL")}`}
+              precio={pizza.precio}  
               ingredientes={pizza.ingredientes}
               imagen={pizza.imagen}
             />
