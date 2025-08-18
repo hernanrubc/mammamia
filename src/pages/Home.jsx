@@ -1,48 +1,25 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import CardPizza from "../components/CardPizza";
 import "../styles/Home.css";
-import { api } from "../services/api";
+import { usePizzas } from "../context/PizzasContext";
 
 export default function Home() {
-  const [pizzas, setPizzas] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { pizzas, loading, error } = usePizzas();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await api.get("/pizzas");
-        const adaptadas = data.map((p) => ({
-          id: p.id,
-          nombre: p.name,
-          precio: p.price,
-          ingredientes: p.ingredients,
-          imagen: p.img,
-        }));
-        setPizzas(adaptadas);
-      } catch (e) {
-        setError(e.message || "Error al cargar pizzas");
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
-
-  if (loading) return <div className="container mt-4">Cargando pizzas…</div>;
-  if (error)   return <div className="container mt-4">Ups: {error}</div>;
+  if (loading) return <div className="container mt-4 text-white">Cargando pizzas…</div>;
+  if (error)   return <div className="container mt-4 text-white">Ups: {error}</div>;
+  if (!pizzas || pizzas.length === 0)
+    return <div className="container mt-4 text-white">No hay pizzas por ahora.</div>;
 
   return (
     <div className="container mt-4">
       <div className="row gx-4 gy-4">
         {pizzas.map((pizza) => (
-          <div
-            key={pizza.id}
-            className="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center"
-          >
+          <div key={pizza.id} className="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
             <CardPizza
+              id={pizza.id}
               nombre={pizza.nombre}
-              precio={pizza.precio}  
+              precio={pizza.precio}
               ingredientes={pizza.ingredientes}
               imagen={pizza.imagen}
             />

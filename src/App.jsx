@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-// Pages
+
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';

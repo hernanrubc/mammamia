@@ -6,7 +6,7 @@ export default function Profile() {
     <div className="profile-container">
       <div className="profile-card">
         <div className="profile-header">
-          {/* Ícono de usuario como imagen */}
+        
           <img
             src="https://definicion.de/wp-content/uploads/2019/07/perfil-de-usuario.png"
             alt="Icono de usuario"
