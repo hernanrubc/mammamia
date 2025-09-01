@@ -1,41 +1,45 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; 
-import { usePizzas } from "../context/PizzasContext";
+import { useParams, Navigate } from "react-router-dom";
+import { api } from "../services/api";
 
 export default function Pizza() {
-  const { id: routeId } = useParams();     
-  const pizzaId = routeId || "p001";
-  const { byId, fetchPizzaById } = usePizzas();
-
-  const [pizza, setPizza] = useState(byId[pizzaId]);
-  const [loading, setLoading] = useState(!byId[pizzaId]);
+  const { id } = useParams();
+  const [pizza, setPizza] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     let active = true;
     (async () => {
       try {
-        if (!byId[pizzaId]) {
-          setLoading(true);
-          const data = await fetchPizzaById(pizzaId);
-          if (active) setPizza(data);
-        } else {
-          setPizza(byId[pizzaId]);
-        }
+        setLoading(true);
+        const { data } = await api.get(`/pizzas/${id}`);
+        if (!active) return;
+        const adaptada = {
+          id: data.id,
+          nombre: data.name,
+          precio: data.price,
+          imagen: data.img,
+          desc: data.desc,
+          ingredientes: data.ingredients || [],
+        };
+        setPizza(adaptada);
       } catch (e) {
-        if (active) setError(e.message || "Error al cargar la pizza");
+        if (active) setError("No se encontró la pizza solicitada.");
       } finally {
         if (active) setLoading(false);
       }
     })();
     return () => { active = false; };
-  }, [pizzaId, byId, fetchPizzaById]);
+  }, [id]);
 
-  if (loading) return <div className="container mt-4">Cargando pizza…</div>;
-  if (error)   return <div className="container mt-4">Ups: {error}</div>;
+  if (!id) return <Navigate to="/" replace />;
+
+  if (loading) return <div className="container mt-4 text-white">Cargando pizza…</div>;
+  if (error)   return <div className="container mt-4 text-white">{error}</div>;
   if (!pizza)  return null;
 
-  const priceCLP = `$${pizza.precio?.toLocaleString("es-CL")}`;
+  const priceCLP = `$${Number(pizza.precio).toLocaleString("es-CL")}`;
 
   return (
     <div className="container mt-4">
@@ -56,12 +60,9 @@ export default function Pizza() {
           <div className="mb-3">
             <strong>Ingredientes:</strong>
             <ul className="mt-2">
-              {pizza.ingredientes?.map((ing) => (
-                <li key={ing}>{ing}</li>
-              ))}
+              {pizza.ingredientes.map((ing) => <li key={ing}>{ing}</li>)}
             </ul>
           </div>
-          <button className="btn btn-primary">Añadir al carrito</button>
         </div>
       </div>
     </div>

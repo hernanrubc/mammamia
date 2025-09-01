@@ -1,4 +1,3 @@
-
 .pizza-card {
   display: flex;
   flex-direction: column;
@@ -41,7 +40,6 @@
   margin-bottom: 20px; 
 }
 
-
 .btn {
   width: 45%;
   font-size: 0.9rem;
@@ -49,6 +47,12 @@
   border-radius: 5px;
 }
 
+.pizza-card .btn {
+  width: 45%;
+  font-size: 0.9rem;
+  padding: 8px;
+  border-radius: 5px;
+}
 
 .btn-success {
   background-color: #9BC53D !important; 
